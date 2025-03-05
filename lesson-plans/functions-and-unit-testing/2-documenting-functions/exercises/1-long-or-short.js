@@ -1,13 +1,12 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
- * _
+ * _ This returns a single string containing 'short' or 'long' depending on the result of checking the length of the string
  *
- * @_ {_} _ - _
- * @_ {_} _ - _
- * @_ {_} _
+ * @param {string} text - text that we check
+ * @param {number} cutoff - expected length of the string
+ * @returns {string} if the length of the string is short it returns 'short' if long it returns 'long'
  */
 const longOrShort = (text, cutoff) => {
   if (text.length < cutoff) {
