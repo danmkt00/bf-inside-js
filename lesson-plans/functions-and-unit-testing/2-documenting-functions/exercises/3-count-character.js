@@ -1,9 +1,12 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
+ * _This returns number of how many times we find given letter in our text
  *
+ * @param {string} text - our text
+ * @param {string} toCount - our letter that we look for in text
+ * @return {number} if our given letter is more than 1 symbol we return -1, if not we look how many times we have it in our text
  */
 const countCharacter = (text, toCount) => {
   if (toCount.length !== 1) {

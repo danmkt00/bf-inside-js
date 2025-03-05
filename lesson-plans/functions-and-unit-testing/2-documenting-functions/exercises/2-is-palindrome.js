@@ -3,11 +3,12 @@
 console.log('-- begin --');
 
 /**
- * _
+ * _This returns true or false depending if the string is a palindrom
  *
- * @_ {_} _ - _
- * @_ {_}  _
+ * @param {string} toCheck - our text that we want to check if it's palindrom
+ * @return {boolean}  we compare our text with reversed text and if it's equal we reurn true
  */
+
 const isPalindrome = (toCheck) => {
   let reversed = '';
   for (const character of toCheck) {
