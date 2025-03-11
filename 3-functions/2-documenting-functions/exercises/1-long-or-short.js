@@ -3,14 +3,14 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
- * _
+ * This returns a single string containing 'short' or 'long' depending on  the second param
  *
- * @_ {_} [_=_] - _
- * @_ {_} [_=_] - _
- * @_ {_} _
+ * @param {string} [text = ''] - users text
+ * @param {number} [cutoff = 0] - expected length
+ * @returns {string} 'short' or 'long'
  */
+
 const longOrShort = (text = '', cutoff = 0) => {
   if (text.length < cutoff) {
     return 'short';
