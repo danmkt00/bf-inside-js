@@ -11,37 +11,40 @@
 let userInput = '';
 let unicodeShift = NaN;
 
-while (true) {
-  const userInput = prompt(
+let userConfirmed = false;
+while (!userConfirmed) {
+  userInput = prompt(
     'enter a phrase, each character will be shifted by character code:',
   );
 
   if (userInput === '' || userInput === null) {
     alert('nope, enter something');
-  } else {
-    while (true) {
-      const unicodeShiftInput = prompt(
-        'how many unicode numbers do you want the characters to shift?',
-      );
+    continue;
+  }
 
-      if (unicodeShiftInput === null || unicodeShiftInput === '') {
-        alert('enter something');
-      } else {
-        const unicodeShift = Number(unicodeShiftInput);
+  while (true) {
+    const unicodeShiftInput = prompt(
+      'how many unicode numbers do you want the characters to shift?',
+    );
 
-        if (Number.isNaN(unicodeShift)) {
-          alert('"' + unicodeShiftInput + '" is not a number');
-        } else {
-          break;
-        }
-      }
+    if (unicodeShiftInput === null || unicodeShiftInput === '') {
+      alert('enter something');
+      continue;
     }
-    const confirmMessage =
-      'is this correct?\n\n' + '- "' + userInput + '"\n' + '- ' + unicodeShift;
-    const confirmation = confirm(confirmMessage);
-    if (confirmation) {
+
+    unicodeShift = Number(unicodeShiftInput);
+
+    if (isNaN(unicodeShift)) {
+      alert('"' + unicodeShiftInput + '" is not a number');
+    } else {
       break;
     }
+  }
+  const confirmMessage =
+    'is this correct?\n\n' + '- "' + userInput + '"\n' + '- ' + unicodeShift;
+  const confirmation = confirm(confirmMessage);
+  if (confirmation) {
+    break;
   }
 }
 

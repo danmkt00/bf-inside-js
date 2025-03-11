@@ -13,12 +13,32 @@ alert(instructions);
 let sum = 0;
 
 let userInput = '';
-let isDone = false;
-while (!isDone) {
+while (true) {
   userInput = prompt('enter a number to add, or "done" to finish');
+  console.log('userInput:', typeof userInput, userInput);
 
-  /* -- BEGIN: handle user input - nothing, done, a number or not a number -- */
-  /* -- END -- */
+  // make sure the user input something
+  if(!userInput){
+    alert('nothing is not allowed');
+  }
+
+  // check if the user input is "done", case-insensitive
+  if (userInput === 'done') {
+    break;
+  }
+
+  const nextNumber = Number(userInput);
+  console.log('nextNumber:', typeof nextNumber, nextNumber);
+
+  // continue if the input is not a number
+  if(isNaN(nextNumber)){
+    alert(`'${userInput}'  is not a number, it has been ignored'`)
+    continue;
+  }
+
+  // add the new number to the sum
+  sum+=nextNumber;
+  console.log('sum:', typeof sum, sum);
 }
 
 const sumMessage = 'the sum of your numbers is: ' + sum;

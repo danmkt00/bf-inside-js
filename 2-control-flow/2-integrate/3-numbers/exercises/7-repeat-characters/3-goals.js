@@ -2,29 +2,59 @@
 
 'use strict';
 
-let toRepeat = '';
+let stringToRepeatify = '';
 let repetitions = NaN;
+while (true) {
+  /* gather a string from the user */
+  stringToRepeatify = prompt('enter a phrase, each character will be repeated:');
+  console.log('stringToRepeatify:', typeof stringToRepeatify, stringToRepeatify);
 
-let notConfirmed = true;
-while (notConfirmed) {
-  toRepeat = prompt('enter a phrase, each character will be repeated:');
-
-  if (toRepeat === '' || toRepeat === null) {
+  /* make sure the user input something */
+  if (stringToRepeatify === '' || stringToRepeatify === null) {
     alert('nope, enter something');
   } else {
-    /* -- BEGIN: get a number from the user -- */
-    /* -- END -- */
+    /* ask the user for a number */
+    let inputIsNumber = false;
+    while (!inputIsNumber) {
+      const repetitionsInput = prompt(
+        'how many times do you want to repeat each character?'
+      );
 
+      /* make sure the user input something */
+      if (repetitionsInput === null || repetitionsInput === '') {
+        alert('enter something');
+      } else {
+        /* convert their string to a number */
+        repetitions = Number(repetitionsInput);
+
+        /* make sure the user input a valid number */
+        if (isNaN(repetitions)) {
+          alert('"' + repetitionsInput + '" is not a number');
+        } else {
+          inputIsNumber = true;
+        }
+      }
+    }
+
+    /* ask the user to confirm their input */
     const confirmMessage =
-      'is this correct?\n\n' + '- "' + toRepeat + '"\n' + '- ' + repetitions;
-    notConfirmed = confirm(confirmMessage);
+      'is this correct?\n\n' + '- "' + stringToRepeatify + '"\n' + '- ' + repetitions;
+    const confirmation = confirm(confirmMessage);
+    if (confirmation) {
+      break;
+    }
   }
 }
 
 let withRepeatedCharacters = '';
 
-/* -- BEGIN: repeat each character in the string -- */
-/* -- END -- */
+/* iterate through each character in the user input */
+for (let i = 0; i < stringToRepeatify.length; i++) {
+  /* append each character multiple times to the new string */
+  for (let y = 0; y < repetitions; y++) {
+    withRepeatedCharacters += stringToRepeatify[i];
+  }
+}
 
-const finalMessage = `"${toRepeat}" -> "${withRepeatedCharacters}"`;
+const finalMessage = `"${stringToRepeatify}" -> "${withRepeatedCharacters}"`;
 alert(finalMessage);

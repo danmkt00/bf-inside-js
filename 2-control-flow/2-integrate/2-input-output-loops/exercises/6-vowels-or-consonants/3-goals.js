@@ -10,12 +10,18 @@
 */
 
 let userInput = '';
-while (true) {
+let userConfirmed = false;
+while (!userConfirmed) {
   userInput = prompt('enter a word to filter:');
 
-  /* -- BEGIN: validate input -- */
+  if (userInput === '' || userInput === null) {
+    alert('nope, enter something');
+    continue;
+  }
 
-  /* -- END: validate input -- */
+  const confirmMessage =
+    'do you want to filter this word?\n\n' + '- "' + userInput + '"';
+  userConfirmed = confirm(confirmMessage);
 }
 
 const removeVowels = confirm(`what would you like to remove from "${userInput}"?
@@ -23,17 +29,22 @@ const removeVowels = confirm(`what would you like to remove from "${userInput}"?
 - cancel: consonants
 `);
 
-let toRemove = '';
-if (removeVowels) {
-  toRemove = 'AEIOU';
-} else {
-  toRemove = 'BCDFGHJKLMNPQRSTVWXYZ';
-}
+const vowels = 'aeiou';
 
 let filteredInput = '';
-/* -- BEGIN: filter input -- */
-
-/* -- END: filter input -- */
+for (const character of userInput) {
+  const lowerCaseCharacter = character.toLowerCase();
+  if (removeVowels) {   //if we remove vowels from text
+    if (vowels.includes(lowerCaseCharacter)) {
+      continue;
+    }
+    filteredInput += character;
+  } else { //if we don't remove vowels from text
+    if (!vowels.includes(lowerCaseCharacter)) {
+      filteredInput += character;
+    }
+  }
+}
 
 const finalMessage = `"${userInput}" -> "${filteredInput}"`;
 alert(finalMessage);

@@ -8,70 +8,59 @@
 
 */
 
-let userString = '';
+let stringToRepeatify = '';
 let repetitions = NaN;
-
-let didConfirm = false;
-while (didConfirm) {
+while (true) {
   /* gather a string from the user */
-  userString = prompt('enter a phrase, each character will be repeated:');
-  console.log('userString:', typeof userString, userString);
+  stringToRepeatify = prompt('enter a phrase, each character will be repeated:');
+  console.log('stringToRepeatify:', typeof stringToRepeatify, stringToRepeatify);
 
   /* make sure the user input something */
-  if (userString === '' || userString === null) {
+  if (stringToRepeatify === '' || stringToRepeatify === null) {
     alert('nope, enter something');
   } else {
     /* ask the user for a number */
-    while (true) {
+    let inputIsNumber = false;
+    while (!inputIsNumber) {
       const repetitionsInput = prompt(
-        'how many times do you want to repeat each character?',
-      );
-      console.log(
-        'repetitionsInput:',
-        typeof repetitionsInput,
-        repetitionsInput,
+        'how many times do you want to repeat each character?'
       );
 
       /* make sure the user input something */
       if (repetitionsInput === null || repetitionsInput === '') {
         alert('enter something');
-        continue;
-      }
-
-      /* convert their string to a number */
-      repetitions = Number(repetitionsInput);
-      console.log('repetitions:', typeof repetitions, repetitions);
-
-      /* make sure the user input a valid number */
-      if (Number.isNaN(repetitions)) {
-        alert('"' + repetitionsInput + '" is not a number');
       } else {
-        continue;
+        /* convert their string to a number */
+        repetitions = Number(repetitionsInput);
+
+        /* make sure the user input a valid number */
+        if (isNaN(repetitions)) {
+          alert('"' + repetitionsInput + '" is not a number');
+        } else {
+          inputIsNumber = true;
+        }
       }
     }
 
     /* ask the user to confirm their input */
     const confirmMessage =
-      'is this correct?\n\n' + '- "' + userString + '"\n' + '- ' + repetitions;
-    didConfirm = confirm(confirmMessage);
+      'is this correct?\n\n' + '- "' + stringToRepeatify + '"\n' + '- ' + repetitions;
+    const confirmation = confirm(confirmMessage);
+    if (confirmation) {
+      break;
+    }
   }
 }
 
 let withRepeatedCharacters = '';
 
 /* iterate through each character in the user input */
-for (const character in userString) {
+for (let i = 0; i < stringToRepeatify.length; i++) {
   /* append each character multiple times to the new string */
-  for (let i = 0; i < repetitions; i++) {
-    withRepeatedCharacters += character;
+  for (let y = 0; y < repetitions; y++) {
+    withRepeatedCharacters += stringToRepeatify[i];
   }
 }
 
-console.log(
-  'withRepeatedCharacters:',
-  typeof withRepeatedCharacters,
-  withRepeatedCharacters,
-);
-
-const finalMessage = `"${userString}" -> "${withRepeatedCharacters}"`;
+const finalMessage = `"${stringToRepeatify}" -> "${withRepeatedCharacters}"`;
 alert(finalMessage);

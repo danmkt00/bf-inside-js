@@ -14,19 +14,39 @@ alert(instructions);
 let sum = 0;
 let inputCount = 0;
 
-while (true) {
+let stillEnteringNumbers = true;
+
+while (stillEnteringNumbers) {
   const userInput = prompt('enter a number to add, or "done" to finish');
+  console.log('userInput:', typeof userInput, userInput);
 
   if (userInput === '' || userInput === null) {
     alert('nothing is not allowed');
     continue;
   }
 
-  /* -- BEGIN: update sum and inputCount if input is a number, exit if it is "done" -- */
-  /* -- END -- */
+  if (userInput.toLowerCase() === 'done') {
+    stillEnteringNumbers = false;
+    break;
+  }
+
+  const nextNumber = Number(userInput);
+  console.log('nextNumber:', typeof nextNumber, nextNumber);
+
+  if (Number.isNaN(nextNumber)) {
+    alert('"' + userInput + '" is not a number, it has been ignored');
+    continue;
+  }
+
+  sum = sum + nextNumber;
+  console.log('sum:', typeof sum, sum);
+
+  inputCount++;
+  console.log('inputCount:', typeof inputCount, inputCount);
 }
 
 const average = sum / inputCount;
+console.log('average:', typeof average, average);
 
 const averageMessage = 'the average of your numbers is: ' + average;
 alert(averageMessage);

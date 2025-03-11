@@ -2,11 +2,10 @@
 
 'use strict';
 
-/* look out for:
-
-  - using the wrong variable name
-  - checking different random numbers instead of the same one
-
+/*
+  - put the correct text in the correct interactions
+  - store the randomly selected phrase input for later
+  - compare the user input to the random phrase
 */
 
 const instructions =
@@ -17,37 +16,52 @@ const instructions =
 alert(instructions);
 
 let input1 = null;
-let input2 = null;
-let input3 = null;
-
-while (input1 !== '' && input1 !== null) {
+while (input1 === '' || input1 === null) {
   input1 = prompt('enter your first secret phrase:');
+  console.log('input1:', typeof input1, input1);
 }
-while (input1 !== '' && input1 !== null) {
+let input2 = null;
+while (input2 === '' || input2 === null) {
   input2 = prompt('enter your second secret phrase:');
+  console.log('input2:', typeof input2, input2);
 }
-while (input1 !== '' && input1 !== null) {
+let input3 = null;
+while (input3 === '' || input3 === null) {
   input3 = prompt('enter your third secret phrase:');
+  console.log('input3:', typeof input3, input3);
 }
 
 alert('all saved! get ready to remember');
 
-const randomFrom1To3 = Math.ceil(Math.random() * 3);
-const userGuess = prompt('enter phrase number ', randomFrom1To3);
+// generate a random number: 1, 2 or 3
+const randomFrom1To3 = Math.floor(Math.random() * 3) + 1;
 
+console.log('randomFrom1To3:', typeof randomFrom1To3, randomFrom1To3);
+
+// assign the randomly selected input to a new variable
+// this variable will be used later for comparing
 let phraseToGuess = '';
-if (Math.ceil(Math.random() * 3) === 1) {
-  phraseToGuess = option1;
-} else if (Math.ceil(Math.random() * 3) === 2) {
-  phraseToGuess = option1;
-} else if (Math.ceil(Math.random() * 3) === 3) {
-  phraseToGuess = option1;
+if (randomFrom1To3 === 3) {
+  phraseToGuess = input3;
+} else if (randomFrom1To3 === 2) {
+  phraseToGuess = input2;
+} else if (randomFrom1To3 === 1) {
+  phraseToGuess = input1;
+} else {
+  console.log('unreachable!');
+  console.log('the number will always be 1, 2 or 3');
 }
 
-const guessIsCorrect = phraseToGuess === userGuess;
+const guessMessage = 'enter phrase number ' + randomFrom1To3;
+const userGuess = prompt(guessMessage);
+console.log('userGuess:', typeof userGuess, userGuess);
 
-const gameResult = guessMessage
-  ? 'correct! phrase ' + randomFrom1To3 + ' was "' + phraseToGuess + '"'
-  : 'nope :(';
+// does the user's guess exactly match the random phrase?
+const guessIsCorrect = userGuess === phraseToGuess;
+console.log('guessMessage:', typeof guessMessage, guessMessage);
 
-alert(guessIsCorrect);
+if (guessIsCorrect) {
+  alert('correct! phrase ' + randomFrom1To3 + ' was "' + phraseToGuess + '"');
+} else {
+  alert('nope :(');
+}

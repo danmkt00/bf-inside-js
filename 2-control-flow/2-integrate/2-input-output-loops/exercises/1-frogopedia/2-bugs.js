@@ -9,22 +9,30 @@
 
 */
 
+'use strict';
+
 let userInput = '';
-let inputIsAboutFrogs = true;
+let inputIsAboutFrogs = false;
 while (!inputIsAboutFrogs) {
   userInput = prompt('tell me something about frogs');
+  console.log('userInput:', typeof userInput, userInput);
 
-  if (inputIsAboutFrogs === '' && inputIsAboutFrogs === null) {
+  // check if the user entered nothing, or clicked cancel
+  if (userInput === '' || userInput === null) {
     alert('that is not something');
+    continue;
   }
-  // regular expression: this works!
-  else if (/frog/i.test(userInput) === true) {
-    inputIsAboutFrogs = false;
-  } else {
-    alert('nope, not about frogs.  try again.');
+
+  // search the user input for "frog", upper or lower case
+  if (userInput.toLowerCase().includes('frog')) {
+    inputIsAboutFrogs = true;
+    continue;
   }
+
+  alert('nope, not about frogs.  try again.');
 }
 
 const finalMessage =
   'i just learned something cool about frogs!\n\n- "' + userInput + '"';
 alert(finalMessage);
+

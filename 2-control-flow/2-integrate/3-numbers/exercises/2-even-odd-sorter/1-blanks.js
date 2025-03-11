@@ -9,17 +9,21 @@ while (userNumberIsNaN) {
   console.log('userInput:', typeof userInput, userInput);
 
   // make sure the user entered something
-  ___;
+  if(userInput === '' || userInput === null){
+    alert('enter something!');
+    continue;
+  }
 
   userNumber = Number(userInput);
   console.log('userNumber:', typeof userNumber, userNumber);
 
   // check if the input was a valid number
-  if (_) {
+  if (isNaN(userInput)) {
     alert('"' + userInput + '" is not a number');
+    continue;
   } else {
     // if the input was a number, toggle the flag
-    _ = false;
+    userNumberIsNaN = false;
   }
 }
 

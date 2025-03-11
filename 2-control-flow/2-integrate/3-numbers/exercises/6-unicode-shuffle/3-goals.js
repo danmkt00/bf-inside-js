@@ -13,33 +13,43 @@ while (!userConfirmed) {
 
   if (userInput === '' || userInput === null) {
     alert('nope, enter something');
-  } else {
-    while (true) {
-      const unicodeShiftInput = prompt(
-        'how many unicode numbers do you want the characters to shift?',
-      );
+    continue;
+  }
 
-      if (unicodeShiftInput === null || unicodeShiftInput === '') {
-        alert('enter something');
-      } else {
-        unicodeShift = Number(unicodeShiftInput);
+  while (true) {
+    const unicodeShiftInput = prompt(
+      'how many unicode numbers do you want the characters to shift?',
+    );
 
-        if (Number.isNaN(unicodeShift)) {
-          alert('"' + unicodeShiftInput + '" is not a number');
-        } else {
-          break;
-        }
-      }
+    if (unicodeShiftInput === null || unicodeShiftInput === '') {
+      alert('enter something');
+      continue;
     }
-    /* -- BEGIN: ask the user to confirm their string and shift number -- */
-    /* -- END -- */
+
+    unicodeShift = Number(unicodeShiftInput);
+
+    if (isNaN(unicodeShift)) {
+      alert('"' + unicodeShiftInput + '" is not a number');
+    } else {
+      break;
+    }
+  }
+  const confirmMessage =
+    'is this correct?\n\n' + '- "' + userInput + '"\n' + '- ' + unicodeShift;
+  const confirmation = confirm(confirmMessage);
+  if (confirmation) {
+    break;
   }
 }
 
 let encodedString = '';
 
-/* -- BEGIN: create the encoded string -- */
-/* -- END -- */
+for (const character of userInput) {
+  const characterCode = character.charCodeAt();
+  const newCharCode = characterCode + unicodeShift;
+  const encodedCharacter = String.fromCharCode(newCharCode);
+  encodedString += encodedCharacter;
+}
 
 const finalMessage = `"${userInput}" -> "${encodedString}"`;
 alert(finalMessage);

@@ -11,24 +11,35 @@
 
 */
 
-const userNumber = NaN;
-while (Number.isNaN(userNumber)) {
+let userNumber = NaN;
+let userNumberIsNaN = true;
+while (userNumberIsNaN) {
   const userInput = prompt('enter a number');
+  console.log('userInput:', typeof userInput, userInput);
 
-  if (userInput === '' && userInput === null) {
+  // make sure the user entered something
+  if(userInput === '' || userInput === null){
     alert('enter something!');
-    break;
+    continue;
   }
 
-  userNumber = NaN(userInput);
+  userNumber = Number(userInput);
+  console.log('userNumber:', typeof userNumber, userNumber);
 
-  if (Number.isNaN(userNumber)) {
-    alert('"', userInput, '" is not a number');
+  // check if the input was a valid number
+  if (isNaN(userInput)) {
+    alert('"' + userInput + '" is not a number');
+    continue;
+  } else {
+    // if the input was a number, toggle the flag
+    userNumberIsNaN = false;
   }
 }
 
 if (userNumber % 2 === 0) {
-  alert(userNumber + ' is even');
+  const evenMessage = userNumber + ' is even';
+  alert(evenMessage);
 } else {
-  alert(userNumber + ' is odd');
+  const oddMessage = userNumber + ' is odd';
+  alert(oddMessage);
 }
