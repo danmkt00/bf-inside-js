@@ -11,7 +11,7 @@
 
 let userInput = '';
 let userConfirmed = false;
-while (_) {
+while (!userConfirmed) {
   userInput = prompt('enter a word to filter:');
 
   if (userInput === '' || userInput === null) {
@@ -19,29 +19,30 @@ while (_) {
     continue;
   }
 
-  const whiteSpaceRegex = new RegExp('\\s', 'g');
-  if (whiteSpaceRegex._(userInput)) {
-    alert("words can't have white space");
-    continue;
-  }
-
   const confirmMessage =
     'do you want to filter this word?\n\n' + '- "' + userInput + '"';
-  _ = confirm(confirmMessage);
+  userConfirmed = confirm(confirmMessage);
 }
 
-const removeVowels = confirm(`what would you like to remove from "${_}"?
+const removeVowels = confirm(`what would you like to remove from "${userInput}"?
 - ok: vowels
 - cancel: consonants
 `);
 
-const toRemove = removeVowels ? '_' : '_';
+const vowels = 'aeiou';
 
 let filteredInput = '';
 for (const character of userInput) {
   const lowerCaseCharacter = character.toLowerCase();
-  if (_) {
-    _;
+  if (removeVowels) {   //if we remove vowels from text
+    if (vowels.includes(lowerCaseCharacter)) {
+      continue;
+    }
+    filteredInput += character;
+  } else { //if we don't remove vowels from text
+    if (!vowels.includes(lowerCaseCharacter)) {
+      filteredInput += character;
+    }
   }
 }
 

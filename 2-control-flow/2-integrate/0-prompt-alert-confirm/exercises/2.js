@@ -4,11 +4,11 @@
 
 // fill in the blank to pass the assertion
 
-const inputValue = _('asdf');
+const inputValue = String('asdf');
 
 console.log(typeof inputValue, inputValue);
 
-const inputAssertion =
-  typeof inputValue === 'object' || typeof inputValue === 'string';
+const inputAssertion = typeof inputValue === 'string' || inputValue === 'object';
+typeof inputValue === 'object' || typeof inputValue === 'string';
 
 console.assert(inputAssertion, 'inputValue should be a string or an object');
