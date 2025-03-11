@@ -12,12 +12,26 @@
  *  If toFind is not 1 character, the search returns -1.
  * @returns {number} The index of the found character or -1.
  */
-__;
+
+  const indexOf = (toSearch = '', toFind = '') => {
+    if(toFind.length > 1){
+      return -1;
+    }
+
+    for(let i = 0; i < toSearch.length; i++){
+      if(toSearch[i] === toFind){
+        return i;
+      }
+    }
+    return -1;
+
+
+  }
 
 describe('indexOf: finds the index of a character in a string', () => {
   describe('successful searches', () => {
     it('finds characters at the beginning of a string', () => {
-      const actual = indexOf('qwerty', 'a');
+      const actual = indexOf('awerty', 'a');
       expect(actual).toEqual(0);
     });
     it('finds characters at the end of a string', () => {

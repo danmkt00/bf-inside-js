@@ -5,7 +5,13 @@
 /**
  *
  */
-__;
+const reverser = (text = '') => {
+  let reversed = '';
+  for (let i = text.length - 1; i >= 0; i--) {
+    reversed += text[i];
+  }
+  return reversed;
+};
 
 describe('reverser: reverses a string', () => {
   it('reverses one letter', () => {
