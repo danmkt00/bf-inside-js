@@ -3,10 +3,14 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
- *
+ * This returns a unicode shuffle
+ * 
+ * @param {string} [text = ' '] - our text
+ * @param {number} [shift = 0] - our number of shifting
+ * @returns {string} - returns new sheffled string
  */
+
 const unicodeShuffle = (text = '', shift = 0) => {
   let encodedString = '';
 

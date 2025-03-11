@@ -3,10 +3,14 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
- *
+ * This returns a string with skipped symbols
+ * 
+ * @param {string} [text = ' '] - our text
+ * @param {number} [toSkip = 1] - our number of skipping symbols
+ * @returns {string} - returns new array with skipped symbols
  */
+
 const skipCharacters = (text = '', toSkip = 1) => {
   if (toSkip < 1) {
     return text;

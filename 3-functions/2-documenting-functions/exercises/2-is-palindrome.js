@@ -3,13 +3,13 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
- * _
+ * This returns a boolean either its palindrome (true) or not (false)
  *
- * @_ {_} [_=_] - _
- * @_ {_}  _
+ * @param {string} [toCheck = ''] - our text that we check 
+ * @returns {boolean} - returns true or false depending on the result
  */
+
 const isPalindrome = (toCheck = '') => {
   let reversed = '';
   for (const character of toCheck) {

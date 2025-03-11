@@ -3,10 +3,14 @@
 'use strict';
 
 console.log('-- begin --');
-
 /**
- *
+ * This returns a number with count of how many times we have a character in a given string
+ * 
+ * @param {string} [text = ' '] - our text
+ * @param {number} [toCount = ' '] - our character that we look for
+ * @returns {number} - returns number of time we see character in text
  */
+
 const countCharacter = (text = '', toCount = '') => {
   if (toCount.length !== 1) {
     return -1;
