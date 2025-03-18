@@ -5,4 +5,16 @@
  * @param {_} [_=_] - The characters to keep.
  * @returns {_} Text with only the given characters still in it.
  */
-export const keepCharacters = () => {};
+
+/*
+export const removeCharacters = (text = '', toRemove = '') => {
+  let newText = text;
+  for (const character of toRemove) {
+    newText = newText.replaceAll(character, '');
+  }
+  return newText;
+};
+*/
+export const keepCharacters = (text = '', toKeep = '') => {
+    return [...text].filter(char => toKeep.includes(char)).join('');
+};
