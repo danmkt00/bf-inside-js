@@ -19,15 +19,7 @@ console.log('-- begin --');
  * @returns {boolean} if the callback returned truthy for each item
  */
 const every = (arr = [], callback = () => {}) => {
-  let allAreTrue = true;
-  for (const entry of arr) {
-    const isTrue = callback(entry);
-    if (!isTrue) {
-      allAreTrue = false;
-      break;
-    }
-  }
-  return allAreTrue;
+  return arr.every(callback);
 };
 
 const argArray = [3, 2, null, 8, 'hi'];

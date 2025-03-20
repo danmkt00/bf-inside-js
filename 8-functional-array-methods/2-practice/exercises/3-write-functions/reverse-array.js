@@ -3,4 +3,6 @@
 /**
  *
  */
-export const reverseArray = (arr = []) => {};
+export const reverseArray = (arr = []) => {
+  return [...arr].reverse();
+};

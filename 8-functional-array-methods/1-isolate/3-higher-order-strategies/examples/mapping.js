@@ -20,12 +20,7 @@ console.log('-- begin --');
  * @returns {Array} a new array with the mapped items
  */
 const map = (arr = [], callback) => {
-  const mappedEntries = [];
-  for (const entry of arr) {
-    const mapped = callback(entry);
-    mappedEntries.push(mapped);
-  }
-  return mappedEntries;
+  return arr.map(callback);
 };
 
 const argArray = [3, true, 'hi', '', 0];

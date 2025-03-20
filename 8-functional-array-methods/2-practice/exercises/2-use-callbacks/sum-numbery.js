@@ -22,11 +22,14 @@ export const sumNumbery = (arr) => {
     return Number(entry);
   };
 
-  // fill in the array method names and callbacks
-  const areAllStrings = arr._(_); // a boolean value
+  // check if all items in the array are strings
+  const areAllStrings = arr.every(isString); // a boolean value
   if (!areAllStrings) {
-    return _;
+    return 0; // return 0 if not all items are strings
   }
 
-  return arr._(_)._(_)._(_, _);
+  return arr
+    .map(castToNumber) // Convert all entries to numbers
+    .filter(isNotNaN) // Filter out NaN values
+    .reduce(sumNumbers, 0); // Sum all the valid numbers starting from 0
 };
