@@ -22,11 +22,11 @@ const reverseWordOrPhrase = () => {
     for (const word of splitText) {
       /// BEGIN: refactor this to call `reverse`
       // const reversedWord = reverse(__);
-
-      let reversedWord = '';
-      for (const char of word) {
-        reversedWord = char + reversedWord;
-      }
+      let reversedWord = reverse(word);
+      // let reversedWord = '';
+      // for (const char of word) {
+      //   reversedWord = char + reversedWord;
+      // }
       /// END: refactor
 
       newWords.push(reversedWord);
@@ -37,11 +37,7 @@ const reverseWordOrPhrase = () => {
     /// BEGIN: refactor this to call `reverse`
     // reversed = reverse(__);
 
-    let reversedText = '';
-    for (const char of userText) {
-      reversedText = char + reversedText;
-    }
-    reversed = reversedText;
+    reversed = reverse(userText);
     /// END: refactor
   }
 
