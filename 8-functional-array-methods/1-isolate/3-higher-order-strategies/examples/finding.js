@@ -19,15 +19,7 @@ console.log('-- begin --');
  * @returns {any} the found item or undefined
  */
 const find = (arr = [], callback = () => {}) => {
-  let found;
-  for (const entry of arr) {
-    const isTheThing = callback(entry);
-    if (isTheThing) {
-      found = entry;
-      break;
-    }
-  }
-  return found;
+  return arr.find(callback);
 };
 
 const argArray = [3, true, 'hi', '', 0];

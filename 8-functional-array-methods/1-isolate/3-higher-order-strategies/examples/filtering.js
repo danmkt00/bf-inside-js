@@ -21,14 +21,7 @@ console.log('-- begin --');
  * @returns {Array} a new array with the filtered items
  */
 const filter = (arr = [], callback = () => {}) => {
-  const filtered = [];
-  for (const entry of arr) {
-    const keepIt = callback(entry);
-    if (keepIt) {
-      filtered.push(entry);
-    }
-  }
-  return filtered;
+  return arr.filter(callback);
 };
 
 const argArray = [3, true, 'hi', '', 0];
